@@ -71,7 +71,6 @@ def delete_old_general_data(city):
             connection.close()
 
 
-
 def delete_units_by_general_ids(deleted_ids):
     connection = psycopg2.connect(**db_params)
     cursor = connection.cursor()
