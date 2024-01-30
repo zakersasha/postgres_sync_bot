@@ -62,13 +62,13 @@ def save_bali_main_data(data):
     insert_sql = """
     INSERT INTO general (
         name, address, district, units_number, link_to_condo, brochure, facilities,
-        overall_available_units, units, "Condo ID", latest_update, city, companies
+        overall_available_units, units, "Condo ID", latest_update, city, companies, overall_min_unit_size, overall_min_unit_price
     )
     VALUES (
         %(name)s, %(address)s, %(district)s, %(units_number)s, %(link_to_condo)s,
         %(brochure)s, %(facilities)s, %(overall_available_units)s,
         %(units)s,
-        %(Condo ID)s, %(latest_update)s, %(city)s, %(companies)s
+        %(Condo ID)s, %(latest_update)s, %(city)s, %(companies)s, %(overall_min_unit_size)s, %(overall_min_unit_price)s
     ) RETURNING id;
     """
 
