@@ -16,7 +16,7 @@ def gather_main_data():
 
     while True:
         response = requests.get(f'https://api.airtable.com/v0/app0pXo7PruFurQjq/tblJObfY0ty6D34wb',
-                                headers={"Authorization": "Bearer " + 'keygbB1MnX8GRvpKW',
+                                headers={"Authorization": "Bearer " + 'patS4Jf9jjQlWTQtY.6a8d3dd5716a685ecc11a084f8a899d266ad34548e1e3571205502fb1176b4e4',
                                          "Content-Type": "application/json",
                                          'User-Agent': 'Mozilla/5.0 (iPhone; CPU iPhone OS 16_2 like Mac OS X) AppleWebKit/605.1.15 (KHTML, '
                                                        'like Gecko) Mobile/15E148 Instagram 278.0.0.19.115 (iPhone13,2; iOS 16_2; en_GB; en-GB; '
@@ -178,7 +178,7 @@ def gather_units_data():
 
     while True:
         response = requests.get(f'https://api.airtable.com/v0/app0pXo7PruFurQjq/tblDzvFZ5MoqBLjKl',
-                                headers={"Authorization": "Bearer " + 'keygbB1MnX8GRvpKW',
+                                headers={"Authorization": "Bearer " + 'patS4Jf9jjQlWTQtY.6a8d3dd5716a685ecc11a084f8a899d266ad34548e1e3571205502fb1176b4e4',
                                          "Content-Type": "application/json",
                                          'User-Agent': 'Mozilla/5.0 (iPhone; CPU iPhone OS 16_2 like Mac OS X) AppleWebKit/605.1.15 (KHTML, '
                                                        'like Gecko) Mobile/15E148 Instagram 278.0.0.19.115 (iPhone13,2; iOS 16_2; en_GB; en-GB; '
