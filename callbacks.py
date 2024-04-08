@@ -7,6 +7,8 @@ from sync.bali import gather_bali_main_data, save_bali_main_data, gather_bali_un
     save_bali_units_data, prepare_bali_main_data
 from sync.bali_i import gather_bali_i_main_data, prepare_bali_i_main_data, save_bali_i_main_data, \
     gather_bali_i_units_data, prepare_bali_i_units_data, save_bali_i_units_data
+from sync.bali_s import gather_sbali_main_data, save_sbali_main_data, prepare_sbali_main_data, gather_sbali_units_data, \
+    prepare_sbali_units_data, save_sbali_units_data
 from sync.dubai import gather_dubai_main_data, prepare_dubai_main_data, save_dubai_main_data, get_all_records, \
     gather_dubai_units_data, prepare_dubai_units_data, save_dubai_units_data
 from sync.miami import gather_miami_main_data, prepare_miami_main_data, save_miami_main_data, gather_miami_units_data, \
@@ -99,7 +101,6 @@ async def process_sync_dubai(call: types.CallbackQuery):
 
 async def process_sync_bali_m(call: types.CallbackQuery):
     await call.message.edit_text('Выполняется синхронизация базы Bali MARV')
-    delete_old_general_data('Bali')
     bali_main_data = gather_bali_main_data()
     bali_main_data_to_save = prepare_bali_main_data(bali_main_data)
     save_bali_main_data(bali_main_data_to_save)
@@ -154,6 +155,24 @@ async def process_sync_uk(call: types.CallbackQuery):
                               reply_markup=await get_sync_choice_keyboard())
 
 
+async def process_sync_bali_s(call: types.CallbackQuery):
+    await call.message.edit_text('Выполняется синхронизация базы Bali Saola')
+    bali_s_main_data = gather_sbali_main_data()
+    bali_s_main_data_to_save = prepare_sbali_main_data(bali_s_main_data)
+    save_sbali_main_data(bali_s_main_data_to_save)
+    print('bali saola general table updated')
+
+    all_general_data = get_all_records()
+
+    bali_s_units_data = gather_sbali_units_data()
+    bali_s_units_data_to_save = prepare_sbali_units_data(bali_s_units_data, all_general_data)
+    save_sbali_units_data(bali_s_units_data_to_save)
+    print('bali saola units table updated')
+    await call.message.edit_text('Синхронизация базы Bali saola завершена!')
+    await call.message.answer('Выберите базу для синхронизации с postgresql:',
+                              reply_markup=await get_sync_choice_keyboard())
+
+
 def register_callbacks(dp: Dispatcher):
     """Register bot callbacks and triggers."""
     dp.register_callback_query_handler(process_back_to_start_menu, lambda c: c.data == 'synchronize')
@@ -164,6 +183,7 @@ def register_callbacks(dp: Dispatcher):
     dp.register_callback_query_handler(process_sync_miami, lambda c: c.data == 'sync_miami')
     dp.register_callback_query_handler(process_sync_singapore, lambda c: c.data == 'sync_singapore')
     dp.register_callback_query_handler(process_sync_bali_m, lambda c: c.data == 'sync_bali_m')
+    dp.register_callback_query_handler(process_sync_bali_s, lambda c: c.data == 'sync_bali_s')
     dp.register_callback_query_handler(process_sync_bali_i, lambda c: c.data == 'sync_bali_i')
     dp.register_callback_query_handler(process_sync_oman, lambda c: c.data == 'sync_oman')
     dp.register_callback_query_handler(process_sync_uk, lambda c: c.data == 'sync_uk')
