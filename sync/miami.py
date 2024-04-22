@@ -42,6 +42,11 @@ def prepare_miami_main_data(main_data):
         data = item['fields']
         data['latest_update'] = date.today().strftime('%Y-%m-%d')
         try:
+            if not data['caption']:
+                data['caption'] = None
+        except KeyError:
+            data['caption'] = None
+        try:
             if data['payment_plans_attached']:
                 data['payment_plans_attached'] = [data['payment_plans_attached'][0]['url']]
         except KeyError:
@@ -69,14 +74,14 @@ def save_miami_main_data(data):
         link_to_condo, facilities, payment_plans,
         overall_min_unit_size, overall_max_unit_size,
         overall_min_unit_psf, overall_min_unit_price,
-        units, "Condo ID", latest_update, description, city, features, companies, selected, payment_plans_attached
+        units, "Condo ID", latest_update, description, city, features, companies, selected, payment_plans_attached, ocaption
     )
     VALUES (
         %(name)s, %(address)s, %(district)s, %(date_of_completion)s,
         %(link_to_condo)s, %(facilities)s, %(payment_plans)s,
         %(overall_min_unit_size)s, %(overall_max_unit_size)s,
         %(overall_min_unit_psf)s,%(overall_min_unit_price)s,
-        %(units)s, %(condo_id)s, %(latest_update)s, %(description)s, %(city)s, %(features)s, %(companies)s, %(selected)s, %(payment_plans_attached)s
+        %(units)s, %(condo_id)s, %(latest_update)s, %(description)s, %(city)s, %(features)s, %(companies)s, %(selected)s, %(payment_plans_attached)s, %(caption)s
     ) RETURNING id;
     """
 

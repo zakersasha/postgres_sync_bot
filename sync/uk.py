@@ -42,6 +42,11 @@ def prepare_uk_main_data(main_data):
         data = item['fields']
         data['latest_update'] = date.today().strftime('%Y-%m-%d')
         try:
+            if not data['caption']:
+                data['caption'] = None
+        except KeyError:
+            data['caption'] = None
+        try:
             data['brochure'] = [data['brochure']]
         except KeyError:
             pass
@@ -66,14 +71,14 @@ def save_uk_main_data(data):
     INSERT INTO general (
         name, address,
         link_to_condo, facilities, overall_min_unit_price, overall_max_unit_price,
-        units, "Condo ID", latest_update, description, city, brochure, tenure, overall_available_units, companies, district
+        units, "Condo ID", latest_update, description, city, brochure, tenure, overall_available_units, companies, district, caption
     )
     VALUES (
         %(name)s, %(address)s,
         %(link_to_condo)s, %(facilities)s,
         %(overall_min_unit_price)s, %(overall_max_unit_price)s,
         %(units)s, %(Condo ID)s, %(latest_update)s, %(description)s, %(city)s, %(brochure)s, %(tenure)s, 
-        %(overall_available_units)s, %(companies)s, %(district)s
+        %(overall_available_units)s, %(companies)s, %(district)s, %(caption)s
     );
     """
 

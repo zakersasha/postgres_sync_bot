@@ -42,6 +42,11 @@ def prepare_oman_main_data(main_data):
         data = item['fields']
         data['latest_update'] = date.today().strftime('%Y-%m-%d')
         try:
+            if not data['caption']:
+                data['caption'] = None
+        except KeyError:
+            data['caption'] = None
+        try:
             data['Condo ID'] = str(data['Condo ID'])
         except (ValueError, KeyError):
             pass
@@ -58,13 +63,13 @@ def save_oman_main_data(data):
     insert_sql = """
     INSERT INTO general (
         name, link_to_condo, district, overall_available_units,
-        overall_min_unit_price, overall_min_unit_psf, "Condo ID", latest_update, city, companies
+        overall_min_unit_price, overall_min_unit_psf, "Condo ID", latest_update, city, companies, caption
     )
     VALUES (
         %(name)s, %(link_to_condo)s,
         %(district)s, %(overall_available_units)s,
         %(overall_min_unit_price)s, %(overall_min_unit_psf)s,
-        %(Condo ID)s, %(latest_update)s, %(city)s, %(companies)s
+        %(Condo ID)s, %(latest_update)s, %(city)s, %(companies)s, %(caption)s
     );
     """
 

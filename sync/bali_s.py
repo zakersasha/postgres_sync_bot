@@ -51,6 +51,11 @@ def prepare_sbali_main_data(main_data):
         data = item['fields']
         data['latest_update'] = date.today().strftime('%Y-%m-%d')
         try:
+            if not data['caption']:
+                data['caption'] = None
+        except KeyError:
+            data['caption'] = None
+        try:
             data['Condo ID'] = str(data['Condo ID'])
         except (ValueError, KeyError):
             pass
@@ -92,14 +97,14 @@ def save_sbali_main_data(data):
     INSERT INTO general (
         name, address, district, units_number, link_to_condo, brochure, facilities,
         overall_available_units, units, "Condo ID", latest_update, city, companies, developer, location, commission, 
-        developer_links, developer_website, date_of_completion, tenure, area, overall_min_unit_size, overall_min_unit_price
+        developer_links, developer_website, date_of_completion, tenure, area, overall_min_unit_size, overall_min_unit_price, caption
     )
     VALUES (
         %(name)s, %(address)s, %(district)s, %(units_number)s, %(link_to_condo)s,
         %(brochure)s, %(facilities)s, %(overall_available_units)s,
         %(units)s, %(Condo ID)s, %(latest_update)s, %(city)s, %(companies)s, 
         %(developer)s, %(location)s, %(commission)s, %(developer_links)s, %(developer_website)s, %(date_of_completion)s,
-         %(tenure)s, %(area)s, %(overall_min_unit_size)s, %(overall_min_unit_price)s
+         %(tenure)s, %(area)s, %(overall_min_unit_size)s, %(overall_min_unit_price)s, %(caption)s
     ) RETURNING id;
     """
 

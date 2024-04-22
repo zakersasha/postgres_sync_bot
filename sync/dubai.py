@@ -42,6 +42,11 @@ def prepare_dubai_main_data(main_data):
         data = item['fields']
         data['latest_update'] = date.today().strftime('%Y-%m-%d')
         try:
+            if not data['caption']:
+                data['caption'] = None
+        except KeyError:
+            data['caption'] = None
+        try:
             data['Condo ID'] = str(data['Condo ID'])
         except (ValueError, KeyError):
             pass
@@ -72,7 +77,7 @@ def save_dubai_main_data(data):
         overall_min_unit_psf, overall_max_unit_psf,
         overall_min_unit_price, overall_max_unit_price,
         units, site_plans_urls,
-        "Condo ID", latest_update, description, city, longitude, latitude, payment_plans, companies, selected
+        "Condo ID", latest_update, description, city, longitude, latitude, payment_plans, companies, selected, caption
     )
     VALUES (
         %(name)s, %(address)s, %(district)s, %(units_number)s, %(date_of_completion)s,
@@ -82,7 +87,7 @@ def save_dubai_main_data(data):
         %(overall_min_unit_psf)s, %(overall_max_unit_psf)s,
         %(overall_min_unit_price)s, %(overall_max_unit_price)s,
         %(units)s, %(site_plans_urls)s,
-        %(Condo ID)s, %(latest_update)s, %(description)s, %(city)s, %(longitude)s, %(latitude)s, %(payment_plans)s, %(companies)s, %(selected)s
+        %(Condo ID)s, %(latest_update)s, %(description)s, %(city)s, %(longitude)s, %(latitude)s, %(payment_plans)s, %(companies)s, %(selected)s, %(caption)s
     ) RETURNING id;
     """
 
