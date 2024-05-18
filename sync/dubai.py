@@ -77,7 +77,7 @@ def save_dubai_main_data(data):
         overall_min_unit_psf, overall_max_unit_psf,
         overall_min_unit_price, overall_max_unit_price,
         units, site_plans_urls,
-        "Condo ID", latest_update, description, city, longitude, latitude, payment_plans, companies, selected, caption
+        "Condo ID", latest_update, description, city, longitude, latitude, payment_plans, companies, selected, caption, link_to_brochure
     )
     VALUES (
         %(name)s, %(address)s, %(district)s, %(units_number)s, %(date_of_completion)s,
@@ -87,7 +87,7 @@ def save_dubai_main_data(data):
         %(overall_min_unit_psf)s, %(overall_max_unit_psf)s,
         %(overall_min_unit_price)s, %(overall_max_unit_price)s,
         %(units)s, %(site_plans_urls)s,
-        %(Condo ID)s, %(latest_update)s, %(description)s, %(city)s, %(longitude)s, %(latitude)s, %(payment_plans)s, %(companies)s, %(selected)s, %(caption)s
+        %(Condo ID)s, %(latest_update)s, %(description)s, %(city)s, %(longitude)s, %(latitude)s, %(payment_plans)s, %(companies)s, %(selected)s, %(caption)s, %(link_to_brochure)s
     ) RETURNING id;
     """
 

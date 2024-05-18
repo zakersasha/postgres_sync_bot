@@ -136,7 +136,7 @@ def save_main_data(data):
         overall_min_unit_price, overall_max_unit_price,
         location_map_attachments, units, amenities,
         floor_plans_urls, site_plans_urls,
-        "Condo ID", latest_update, description, city, companies, selected, caption
+        "Condo ID", latest_update, description, city, companies, selected, caption, link_to_brochure
     )
     VALUES (
         %(name)s, %(address)s, %(district)s, %(type)s, %(units_number)s, %(units_size)s,
@@ -148,7 +148,7 @@ def save_main_data(data):
         %(overall_min_unit_price)s, %(overall_max_unit_price)s,
         %(location_map_attachments)s, %(units)s, %(amenities)s,
         %(floor_plans_urls)s, %(site_plans_urls)s,
-        %(Condo ID)s, %(latest_update)s, %(description)s, %(city)s, %(companies)s, %(selected)s, %(caption)s
+        %(Condo ID)s, %(latest_update)s, %(description)s, %(city)s, %(companies)s, %(selected)s, %(caption)s, %(link_to_brochure)s
     );
     """
 

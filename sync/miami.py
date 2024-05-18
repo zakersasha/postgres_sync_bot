@@ -74,14 +74,14 @@ def save_miami_main_data(data):
         link_to_condo, facilities, payment_plans,
         overall_min_unit_size, overall_max_unit_size,
         overall_min_unit_psf, overall_min_unit_price,
-        units, "Condo ID", latest_update, description, city, features, companies, selected, payment_plans_attached, ocaption
+        units, "Condo ID", latest_update, description, city, features, companies, selected, payment_plans_attached, ocaption, link_to_brochure
     )
     VALUES (
         %(name)s, %(address)s, %(district)s, %(date_of_completion)s,
         %(link_to_condo)s, %(facilities)s, %(payment_plans)s,
         %(overall_min_unit_size)s, %(overall_max_unit_size)s,
         %(overall_min_unit_psf)s,%(overall_min_unit_price)s,
-        %(units)s, %(condo_id)s, %(latest_update)s, %(description)s, %(city)s, %(features)s, %(companies)s, %(selected)s, %(payment_plans_attached)s, %(caption)s
+        %(units)s, %(condo_id)s, %(latest_update)s, %(description)s, %(city)s, %(features)s, %(companies)s, %(selected)s, %(payment_plans_attached)s, %(caption)s, %(link_to_brochure)s
     ) RETURNING id;
     """
 

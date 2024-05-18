@@ -63,13 +63,13 @@ def save_oman_main_data(data):
     insert_sql = """
     INSERT INTO general (
         name, link_to_condo, district, overall_available_units,
-        overall_min_unit_price, overall_min_unit_psf, "Condo ID", latest_update, city, companies, caption
+        overall_min_unit_price, overall_min_unit_psf, "Condo ID", latest_update, city, companies, caption, link_to_brochure
     )
     VALUES (
         %(name)s, %(link_to_condo)s,
         %(district)s, %(overall_available_units)s,
         %(overall_min_unit_price)s, %(overall_min_unit_psf)s,
-        %(Condo ID)s, %(latest_update)s, %(city)s, %(companies)s, %(caption)s
+        %(Condo ID)s, %(latest_update)s, %(city)s, %(companies)s, %(caption)s, %(link_to_brochure)s
     );
     """
 

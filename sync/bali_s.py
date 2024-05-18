@@ -97,14 +97,14 @@ def save_sbali_main_data(data):
     INSERT INTO general (
         name, address, district, units_number, link_to_condo, brochure, facilities,
         overall_available_units, units, "Condo ID", latest_update, city, companies, developer, location, commission, 
-        developer_links, developer_website, date_of_completion, tenure, area, overall_min_unit_size, overall_min_unit_price, caption
+        developer_links, developer_website, date_of_completion, tenure, area, overall_min_unit_size, overall_min_unit_price, caption, link_to_brochure
     )
     VALUES (
         %(name)s, %(address)s, %(district)s, %(units_number)s, %(link_to_condo)s,
         %(brochure)s, %(facilities)s, %(overall_available_units)s,
         %(units)s, %(Condo ID)s, %(latest_update)s, %(city)s, %(companies)s, 
         %(developer)s, %(location)s, %(commission)s, %(developer_links)s, %(developer_website)s, %(date_of_completion)s,
-         %(tenure)s, %(area)s, %(overall_min_unit_size)s, %(overall_min_unit_price)s, %(caption)s
+         %(tenure)s, %(area)s, %(overall_min_unit_size)s, %(overall_min_unit_price)s, %(caption)s, %(link_to_brochure)s
     ) RETURNING id;
     """
 
